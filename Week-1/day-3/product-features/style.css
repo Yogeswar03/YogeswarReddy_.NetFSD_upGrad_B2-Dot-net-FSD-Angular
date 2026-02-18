@@ -1,0 +1,55 @@
+/* Element Selector */
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+/* Class Selector */
+.features-section {
+    width: 400px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 25px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+/* Descendant Selector */
+.features-section h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* Class Selector */
+.features-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Descendant Selector */
+.features-list li {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+
+    padding: 12px;
+    margin-bottom: 10px;
+
+    border: 1px solid #90caf9;
+    border-radius: 6px;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.features-list li:hover {
+    background-color: #0d47a1;
+    color: white;
+    transform: translateX(5px);
+}
