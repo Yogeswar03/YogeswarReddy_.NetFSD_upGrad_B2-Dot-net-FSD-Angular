@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Notes Saver</title>
+</head>
+<body>
+
+    <h2>Daily Notes</h2>
+
+    <textarea id="noteArea" rows="5" cols="40" placeholder="Write your note..."></textarea>
+    <br><br>
+
+    <button onclick="saveNote()">Save</button>
+    <button onclick="clearTextarea()">Clear</button>
+
+    <h3>Saved Notes:</h3>
+    <ul id="savedNotes"></ul>
+
+    <script>
+
+        function saveNote() {
+
+            var noteText = document.getElementById("noteArea").value;
+
+            if (noteText.trim() === "") {
+                alert("Please write something!");
+                return;
+            }
+            var notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+           
+            notes.unshift(noteText);
+
+            if (notes.length > 5) {
+                notes.pop();
+            }
+            localStorage.setItem("notes", JSON.stringify(notes));
+
+            displayNotes();
+            document.getElementById("noteArea").value = "";
+        }
+
+        function clearTextarea() {
+            document.getElementById("noteArea").value = "";
+        }
+
+        function displayNotes() {
+
+            var notesList = document.getElementById("savedNotes");
+            notesList.innerHTML = "";
+
+            var notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+            for (var i = 0; i < notes.length; i++) {
+
+                var li = document.createElement("li");
+                li.innerHTML = notes[i];
+                notesList.appendChild(li);
+            }
+        }
+        window.onload = function () {
+            displayNotes();
+        };
+
+    </script>
+
+</body>
+</html>
