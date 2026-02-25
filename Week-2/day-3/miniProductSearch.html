@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Product Search</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+            background: #f4f4f4;
+        }
+
+        .container {
+            width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 8px;
+            margin-bottom: 8px;
+            background: #eee;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background: #ddd;
+        }
+
+        .no-results {
+            text-align: center;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Product Search</h2>
+    <input type="text" id="searchInput" placeholder="Search products...">
+    <ul id="productList"></ul>
+</div>
+
+<script>
+    const state = {
+        products: [
+            "Laptop",
+            "Mouse",
+            "Keyboard",
+            "Monitor",
+            "Headphones",
+            "Smartphone",
+            "Charger"
+        ],
+        filteredProducts: []
+    };
+
+    const searchInput = document.getElementById("searchInput");
+    const productList = document.getElementById("productList");
+
+
+    const renderProducts = (products) => {
+        productList.innerHTML = "";
+
+        if (products.length === 0) {
+            productList.innerHTML = `<li class="no-results">No Results Found</li>`;
+            return;
+        }
+
+        products.forEach(product => {
+            const li = document.createElement("li");
+            li.textContent = product;
+            productList.appendChild(li);
+        });
+    };
+
+
+    const filterProducts = (query) => {
+        state.filteredProducts = state.products.filter(product =>
+            product.toLowerCase().includes(query.toLowerCase())
+        );
+
+        renderProducts(state.filteredProducts);
+    };
+
+    const handleListClick = (event) => {
+        if (event.target.tagName === "LI" && 
+            !event.target.classList.contains("no-results")) {
+            alert(`You selected: ${event.target.textContent}`);
+        }
+    };
+
+
+    searchInput.addEventListener("input", (e) => {
+        filterProducts(e.target.value);
+    });
+
+    productList.addEventListener("click", handleListClick);
+
+   
+    renderProducts(state.products);
+</script>
+
+</body>
+</html>

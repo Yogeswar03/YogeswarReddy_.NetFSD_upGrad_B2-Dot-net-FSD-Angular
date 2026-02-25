@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Theme Toggle App</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Light Theme */
+        .light {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* Dark Theme */
+        .dark {
+            background-color: #121212;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Theme Toggle Application</h2>
+    <button id="toggleBtn">Switch Theme</button>
+</div>
+
+<script>
+    const body = document.body;
+    const toggleBtn = document.getElementById("toggleBtn");
+
+    // Apply saved theme on load
+    const applySavedTheme = () => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) {
+            body.className = savedTheme;
+        } else {
+            body.className = "light";
+        }
+    };
+
+    // Toggle theme
+    const toggleTheme = () => {
+        if (body.classList.contains("light")) {
+            body.className = "dark";
+            localStorage.setItem("theme", "dark");
+        } else {
+            body.className = "light";
+            localStorage.setItem("theme", "light");
+        }
+    };
+
+    // Event Listener
+    toggleBtn.addEventListener("click", toggleTheme);
+
+    // Initialize theme on page load
+    applySavedTheme();
+</script>
+
+</body>
+</html>
