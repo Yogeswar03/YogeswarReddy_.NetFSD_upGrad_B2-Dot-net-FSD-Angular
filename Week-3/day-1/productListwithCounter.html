@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Cart Counter</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+        }
+
+        .navbar {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: right;
+            font-size: 18px;
+        }
+
+        .container {
+            width: 800px;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .product {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+        }
+
+        button {
+            padding: 8px 12px;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:disabled {
+            background: gray;
+            cursor: not-allowed;
+        }
+
+        .message {
+            color: green;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    🛒 Cart Items: <span id="cartCount">0</span>
+</div>
+
+<div class="container">
+
+    <div class="product">
+        <h3>Laptop</h3>
+        <p>Price: ₹50,000</p>
+        <button class="addToCart">Add to Cart</button>
+        <div class="message"></div>
+    </div>
+
+    <div class="product">
+        <h3>Smartphone</h3>
+        <p>Price: ₹20,000</p>
+        <button class="addToCart">Add to Cart</button>
+        <div class="message"></div>
+    </div>
+
+    <div class="product">
+        <h3>Headphones</h3>
+        <p>Price: ₹2,000</p>
+        <button class="addToCart">Add to Cart</button>
+        <div class="message"></div>
+    </div>
+
+    <div class="product">
+        <h3>Smartwatch</h3>
+        <p>Price: ₹5,000</p>
+        <button class="addToCart">Add to Cart</button>
+        <div class="message"></div>
+    </div>
+
+</div>
+
+<script>
+$(document).ready(function(){
+
+    var count = 0;
+
+    $(".container").on("click", ".addToCart", function(){
+
+        count++;
+
+        // Update cart counter using .text()
+        $("#cartCount").text(count);
+
+        // Disable button using .prop()
+        $(this).prop("disabled", true);
+
+        // Change button text using .text()
+        $(this).text("Added");
+
+        // Add custom attribute using .attr()
+        $(this).attr("data-added", "true");
+
+        // Show confirmation message
+        $(this).siblings(".message").text("Product added successfully!");
+
+    });
+
+});
+</script>
+
+</body>
+</html>

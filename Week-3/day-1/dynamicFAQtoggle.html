@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FAQ Toggle Section</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        .container {
+            width: 600px;
+            margin: 50px auto;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .question {
+            cursor: pointer;
+            font-weight: bold;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+
+        .answer {
+            display: none;
+            padding: 10px;
+            margin-top: 5px;
+            background-color: #ffffff;
+        }
+
+        /* Highlight active question */
+        .active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <div class="question">1. What courses do you offer?</div>
+        <div class="answer">We offer Web Development, Data Science, AI/ML, and Cloud Computing courses.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">2. How can I enroll?</div>
+        <div class="answer">You can enroll through our website registration form.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">3. Do you provide certificates?</div>
+        <div class="answer">Yes, we provide industry-recognized certificates upon completion.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">4. Are classes online or offline?</div>
+        <div class="answer">We provide both online and offline classroom training.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">5. Is there placement assistance?</div>
+        <div class="answer">Yes, we offer placement assistance and interview preparation.</div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function(){
+
+        $(".question").click(function(){
+            $(this).next(".answer").slideToggle();
+
+            $(this).toggleClass("active");
+
+        });
+
+    });
+</script>
+
+</body>
+</html>
