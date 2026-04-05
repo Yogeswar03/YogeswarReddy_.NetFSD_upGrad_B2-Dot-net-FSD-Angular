@@ -4,7 +4,10 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>day_1__ContactApp_</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="AppDemo.csproj.user" />
+  </ItemGroup>
 
 </Project>
